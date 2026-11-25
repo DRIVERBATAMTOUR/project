@@ -1,0 +1,563 @@
+<!doctype html>
+<meta name="claude:viewport-fit-sides" content="cover">
+<title>Driverbatamtour Batam</title>
+<style>
+/* Layout: one scrolling page. Glass cards float over soft white and yellow fields.
+   Tokens: white ground, warm yellow accent, near-black ink. */
+:root {
+  --bg: #fffdf5;
+  --ink: #1b1b1b;
+  --muted: #5d5a4f;
+  --yellow: #ffc20e;
+  --yellow-deep: #e0a200;
+  --yellow-soft: #fff1b8;
+  --sea: #0f7c8a;
+  --glass: rgba(255, 255, 255, 0.55);
+  --glass-edge: rgba(255, 255, 255, 0.85);
+  --shadow: 0 12px 40px rgba(170, 120, 0, 0.14);
+  --wa: #1fa855;
+  --font-display: "Poppins", "Segoe UI", system-ui, sans-serif;
+  --font-body: "Inter", "Segoe UI", system-ui, sans-serif;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; }
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.6;
+  min-height: 100%;
+  overflow-x: hidden;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  position: relative;
+}
+body::before, body::after {
+  content: "";
+  position: fixed;
+  z-index: -1;
+  border-radius: 50%;
+  filter: blur(60px);
+  pointer-events: none;
+}
+body::before {
+  width: 520px; height: 520px; top: -160px; right: -140px;
+  background: radial-gradient(circle, #ffd84d 0%, rgba(255, 216, 77, 0) 70%);
+  opacity: 0.6;
+}
+body::after {
+  width: 460px; height: 460px; bottom: -120px; left: -140px;
+  background: radial-gradient(circle, #bfe9ee 0%, rgba(191, 233, 238, 0) 70%);
+  opacity: 0.5;
+}
+img { max-width: 100%; display: block; }
+a { color: inherit; }
+h1, h2, h3 { font-family: var(--font-display); line-height: 1.2; text-wrap: balance; margin: 0; }
+p { margin: 0; }
+:focus-visible { outline: 3px solid var(--yellow-deep); outline-offset: 3px; border-radius: 12px; }
+
+/* Language switch: the html lang decides which copy shows. Indonesian is the default. */
+.en { display: none; }
+html[data-lang="en"] .en { display: revert; }
+html[data-lang="en"] .id { display: none; }
+html[data-lang="en"] span.en { display: inline; }
+html[data-lang="en"] .id.inline-only { display: none; }
+
+.wrap { max-width: 1040px; margin: 0 auto; padding-block: 24px 56px; }
+
+.glass {
+  background: var(--glass);
+  border: 1px solid var(--glass-edge);
+  backdrop-filter: blur(18px) saturate(140%);
+  -webkit-backdrop-filter: blur(18px) saturate(140%);
+  box-shadow: var(--shadow);
+  border-radius: 24px;
+}
+
+/* Nav */
+.nav {
+  display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  padding: 10px 14px 10px 10px; position: sticky; top: env(safe-area-inset-top, 0px);
+  z-index: 5; margin-bottom: 28px; border-radius: 999px;
+}
+.brand { display: flex; align-items: center; gap: 10px; text-decoration: none; min-width: 0; }
+.brand img { width: 44px; height: 44px; object-fit: cover; object-position: 50% 45%; border-radius: 12px; }
+.brand span.name { font-family: var(--font-display); font-weight: 700; font-size: 1rem; white-space: nowrap; }
+.nav-right { display: flex; align-items: center; gap: 6px; }
+.nav-links { display: flex; gap: 2px; flex-wrap: wrap; justify-content: flex-end; }
+.nav-links a {
+  text-decoration: none; font-size: 0.875rem; font-weight: 500; padding: 8px 10px; border-radius: 999px;
+}
+.nav-links a:hover { background: rgba(255, 194, 14, 0.25); }
+.lang {
+  display: inline-flex; background: #fff; border-radius: 999px; padding: 3px; border: 1px solid var(--yellow-soft);
+}
+.lang button {
+  font: inherit; font-size: 0.8rem; font-weight: 700; border: 0; background: transparent; cursor: pointer;
+  padding: 6px 10px; border-radius: 999px; color: var(--muted); min-height: 32px;
+}
+.lang button[aria-pressed="true"] { background: var(--yellow); color: var(--ink); }
+
+/* Hero */
+.hero {
+  display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 32px; align-items: center;
+  padding: 40px 36px; border-radius: 32px;
+}
+.eyebrow {
+  display: inline-block; font-size: 0.8rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
+  background: var(--yellow); color: var(--ink); padding: 6px 12px; border-radius: 999px; margin-bottom: 16px;
+}
+.hero h1 { font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 800; letter-spacing: -0.02em; }
+.hero h1 em { font-style: normal; background: linear-gradient(transparent 62%, var(--yellow) 62%); }
+.lead { margin-top: 16px; color: var(--muted); font-size: 1.05rem; max-width: 46ch; }
+.cta-row { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 26px; }
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+  padding: 14px 20px; border-radius: 16px; font-weight: 600; font-size: 0.95rem;
+  text-decoration: none; border: 0; cursor: pointer; font-family: inherit; min-height: 48px;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.btn:hover { transform: translateY(-2px); }
+.btn-wa { background: var(--wa); color: #fff; box-shadow: 0 10px 24px rgba(31, 168, 85, 0.3); }
+.btn-wa small { font-weight: 500; opacity: 0.9; font-variant-numeric: tabular-nums; }
+.btn-ghost { background: #fff; color: var(--ink); border: 1px solid var(--yellow); }
+.hero-visual { position: relative; }
+.hero-visual .glass { padding: 12px; border-radius: 28px; }
+.hero-visual img { border-radius: 20px; width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; background: linear-gradient(135deg, #ffe680, #ffc20e); }
+.badge {
+  position: absolute; left: -12px; bottom: 18px; padding: 10px 14px; border-radius: 16px;
+  font-size: 0.85rem; font-weight: 600; background: #fff; box-shadow: var(--shadow);
+}
+.badge b { color: var(--yellow-deep); }
+
+/* Photo placeholder: shows a soft field until the file is added. */
+.photo {
+  position: relative; border-radius: 18px; overflow: hidden; aspect-ratio: 4 / 3;
+  background: linear-gradient(135deg, #ffe680 0%, #ffc20e 60%, #ffb000 100%);
+}
+.photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+
+/* Sections */
+section { margin-top: 56px; }
+.section-head { margin-bottom: 22px; }
+.section-head h2 { font-size: clamp(1.5rem, 3.4vw, 2rem); font-weight: 700; }
+.section-head p { color: var(--muted); margin-top: 6px; }
+
+.grid-4 { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 16px; }
+.feature { padding: 24px; }
+.icon {
+  width: 48px; height: 48px; border-radius: 16px; background: var(--yellow-soft);
+  display: grid; place-items: center; margin-bottom: 14px; color: var(--yellow-deep); font-weight: 800; font-family: var(--font-display);
+}
+.feature h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: 6px; }
+.feature p { color: var(--muted); font-size: 0.93rem; }
+
+/* Destinations */
+.dest-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 18px; }
+.dest { padding: 12px 12px 18px; display: flex; flex-direction: column; gap: 12px; }
+.dest .photo { border-radius: 16px; }
+.dest-body { padding: 0 8px; display: flex; flex-direction: column; gap: 6px; flex: 1; }
+.dest h3 { font-size: 1.1rem; font-weight: 700; }
+.dest p { color: var(--muted); font-size: 0.93rem; }
+.tag {
+  align-self: flex-start; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.04em;
+  background: var(--yellow-soft); color: var(--ink); padding: 4px 10px; border-radius: 999px;
+}
+.map-link {
+  margin-top: auto; font-weight: 600; font-size: 0.9rem; color: var(--sea); text-decoration: none;
+  padding-top: 8px;
+}
+.map-link:hover { text-decoration: underline; }
+
+/* Urban */
+.urban { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; }
+.urban .glass { padding: 14px; border-radius: 22px; display: flex; flex-direction: column; gap: 10px; }
+.urban h3 { font-size: 1rem; font-weight: 700; padding: 0 6px; }
+.urban p { color: var(--muted); font-size: 0.88rem; padding: 0 6px 6px; }
+
+/* Map */
+.map-wrap { display: grid; grid-template-columns: 1.3fr 1fr; gap: 20px; align-items: center; padding: 22px; border-radius: 28px; }
+.map-wrap svg { width: 100%; height: auto; display: block; }
+.legend { display: grid; gap: 10px; }
+.legend li { list-style: none; display: flex; align-items: flex-start; gap: 10px; color: var(--muted); font-size: 0.92rem; }
+.legend ul { padding: 0; margin: 0; display: grid; gap: 10px; }
+.dot { width: 12px; height: 12px; border-radius: 50%; background: var(--yellow-deep); flex: none; margin-top: 6px; border: 2px solid #fff; box-shadow: 0 0 0 1px var(--yellow-deep); }
+.dot.city { background: var(--sea); box-shadow: 0 0 0 1px var(--sea); }
+.note { font-size: 0.8rem; color: var(--muted); margin-top: 6px; }
+
+/* Pricing */
+.price-card {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 28px; padding: 32px; border-radius: 28px; align-items: center;
+}
+.price-card h3 { font-size: 1.3rem; font-weight: 700; }
+.price-card ul { list-style: none; padding: 0; margin: 14px 0 0; display: grid; gap: 8px; color: var(--muted); font-size: 0.95rem; }
+.price-card li::before { content: "✓"; color: var(--yellow-deep); font-weight: 800; margin-right: 8px; }
+.prices { display: grid; gap: 12px; }
+.price-row {
+  display: flex; justify-content: space-between; align-items: center; gap: 12px;
+  background: #fff; border-radius: 18px; padding: 16px 18px; border: 1px solid rgba(255, 194, 14, 0.35);
+}
+.price-row .cur { font-weight: 600; color: var(--muted); font-size: 0.9rem; }
+.price-row .amt { font-family: var(--font-display); font-weight: 800; font-size: 1.2rem; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.price-note { margin-top: 10px; font-size: 0.82rem; color: var(--muted); }
+
+/* Booking */
+.booking { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.step { padding: 24px; }
+.step .num {
+  display: inline-grid; place-items: center; width: 34px; height: 34px; border-radius: 50%;
+  background: var(--ink); color: var(--yellow); font-weight: 700; font-family: var(--font-display); margin-bottom: 12px;
+}
+.step h3 { font-size: 1.05rem; margin-bottom: 4px; }
+.step p { color: var(--muted); font-size: 0.93rem; }
+.bank { padding: 24px; display: flex; flex-direction: column; gap: 12px; }
+.bank-label { font-size: 0.8rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
+.bank-num {
+  font-family: var(--font-display); font-size: 1.5rem; font-weight: 700; letter-spacing: 0.04em;
+  font-variant-numeric: tabular-nums; word-break: break-all;
+}
+.bank-name { color: var(--muted); }
+.copy-btn {
+  align-self: flex-start; font: inherit; font-weight: 600; font-size: 0.9rem; cursor: pointer;
+  background: var(--yellow); color: var(--ink); border: 0; border-radius: 12px; padding: 10px 16px; min-height: 44px;
+}
+.copy-btn:active { transform: scale(0.98); }
+.copy-msg { font-size: 0.85rem; color: var(--muted); min-height: 1.2em; }
+
+/* Contact strip */
+.contact {
+  margin-top: 56px; padding: 32px; border-radius: 28px; text-align: center;
+  background: linear-gradient(135deg, rgba(255, 216, 77, 0.55), rgba(255, 255, 255, 0.6));
+}
+.contact h2 { font-size: clamp(1.5rem, 3.4vw, 2rem); font-weight: 800; }
+.contact p { color: var(--muted); margin: 8px auto 22px; max-width: 48ch; }
+.cta-row.center { justify-content: center; }
+.footer { text-align: center; color: var(--muted); font-size: 0.85rem; margin-top: 28px; }
+.footer a { font-weight: 600; text-decoration: none; }
+
+@media (max-width: 760px) {
+  .hero { grid-template-columns: 1fr; padding: 28px 22px; text-align: left; }
+  .hero-visual { order: -1; }
+  .badge { left: 10px; bottom: 10px; }
+  .price-card { grid-template-columns: 1fr; padding: 24px; }
+  .booking { grid-template-columns: 1fr; }
+  .map-wrap { grid-template-columns: 1fr; }
+  .nav-links { display: none; }
+  .btn { width: 100%; }
+  .cta-row .btn { flex: 1 1 100%; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .btn { transition: none; }
+}
+</style>
+
+<div class="wrap">
+  <header class="glass nav">
+    <a class="brand" href="#top" aria-label="Driverbatamtour">
+      <img src="logo.png" alt="Logo Driverbatamtour">
+      <span class="name">driverbatamtour</span>
+    </a>
+    <div class="nav-right">
+      <nav class="nav-links" aria-label="Navigasi">
+        <a href="#destinasi"><span class="id">Destinasi</span><span class="en">Places</span></a>
+        <a href="#harga"><span class="id">Harga</span><span class="en">Prices</span></a>
+        <a href="#booking"><span class="id">Booking</span><span class="en">Booking</span></a>
+      </nav>
+      <div class="lang" role="group" aria-label="Bahasa">
+        <button type="button" data-set="id" aria-pressed="true">ID</button>
+        <button type="button" data-set="en" aria-pressed="false">EN</button>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+    <div class="glass hero">
+      <div>
+        <span class="eyebrow"><span class="id">Sewa mobil &amp; driver · Batam</span><span class="en">Car &amp; driver rental · Batam</span></span>
+        <h1>
+          <span class="id">Welcome to Batam! Jelajahi Batam <em>lebih nyaman</em>, aman, tanpa ribet.</span>
+          <span class="en">Welcome to Batam! Explore the island <em>in comfort</em>, safely, hassle-free.</span>
+        </h1>
+        <p class="lead">
+          <span class="id">Driver profesional dan ramah, siap standby menemani perjalananmu. Cocok untuk keluarga, pasangan, maupun rombongan.</span>
+          <span class="en">Professional, friendly drivers on standby for your trip. Great for families, couples and groups.</span>
+        </p>
+        <div class="cta-row">
+          <a class="btn btn-wa" href="https://wa.me/628997070716" target="_blank" rel="noopener">
+            <span class="id">Chat WA 1</span><span class="en">WhatsApp 1</span> <small>0899-7070-716</small>
+          </a>
+          <a class="btn btn-wa" href="https://wa.me/628136759556" target="_blank" rel="noopener">
+            <span class="id">Chat WA 2</span><span class="en">WhatsApp 2</span> <small>0813-6759-556</small>
+          </a>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="glass">
+          <img src="hero.webp" alt="Mobil dengan latar Jembatan Barelang" onerror="this.src='logo.png'; this.style.objectFit='contain'; this.style.background='#fff';">
+        </div>
+        <div class="badge">
+          <span class="id">Mulai dari <b>Rp 700.000</b> / hari</span>
+          <span class="en">Starting from <b>Rp 700,000</b> / day</span>
+        </div>
+      </div>
+    </div>
+
+    <section id="destinasi" aria-labelledby="dest-title">
+      <div class="section-head">
+        <h2 id="dest-title"><span class="id">Destinasi wisata</span><span class="en">Places to visit</span></h2>
+        <p>
+          <span class="id">Tempat favorit yang sering kami antar. Klik lokasi untuk membuka Google Maps.</span>
+          <span class="en">Favourite spots we often take guests to. Tap a place to open it in Google Maps.</span>
+        </p>
+      </div>
+      <div class="dest-grid">
+        <article class="glass dest">
+          <div class="photo"><img src="barelang.webp" alt="Jembatan Barelang" onerror="this.remove()"></div>
+          <div class="dest-body">
+            <span class="tag"><span class="id">Ikon kota</span><span class="en">Landmark</span></span>
+            <h3>Jembatan Barelang</h3>
+            <p><span class="id">Jembatan megah yang menghubungkan Batam, Rempang, dan Galang. Cocok untuk foto dan sunset.</span><span class="en">The iconic bridges linking Batam, Rempang and Galang. Great for photos and sunsets.</span></p>
+            <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Jembatan+Barelang+Batam" target="_blank" rel="noopener"><span class="id">Buka di Google Maps →</span><span class="en">Open in Google Maps →</span></a>
+          </div>
+        </article>
+        <article class="glass dest">
+          <div class="photo"><img src="nongsa.webp" alt="Pantai Nongsa" onerror="this.remove()"></div>
+          <div class="dest-body">
+            <span class="tag"><span class="id">Pantai</span><span class="en">Beach</span></span>
+            <h3>Pantai Nongsa</h3>
+            <p><span class="id">Pantai dengan resor dan pemandangan laut yang tenang. Pas untuk liburan santai.</span><span class="en">Beachfront resorts and calm sea views. Perfect for a relaxed day out.</span></p>
+            <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Pantai+Nongsa+Batam" target="_blank" rel="noopener"><span class="id">Buka di Google Maps →</span><span class="en">Open in Google Maps →</span></a>
+          </div>
+        </article>
+        <article class="glass dest">
+          <div class="photo"><img src="nagoya.webp" alt="Kawasan Nagoya" onerror="this.remove()"></div>
+          <div class="dest-body">
+            <span class="tag"><span class="id">Belanja</span><span class="en">Shopping</span></span>
+            <h3>Nagoya</h3>
+            <p><span class="id">Pusat belanja, kafe, dan kuliner malam. Mudah dijangkau dari pusat kota.</span><span class="en">Shopping, cafés and late-night food. Easy to reach from the city centre.</span></p>
+            <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Nagoya+Batam" target="_blank" rel="noopener"><span class="id">Buka di Google Maps →</span><span class="en">Open in Google Maps →</span></a>
+          </div>
+        </article>
+        <article class="glass dest">
+          <div class="photo"><img src="harbour-bay.webp" alt="Harbour Bay" onerror="this.remove()"></div>
+          <div class="dest-body">
+            <span class="tag"><span class="id">Pelabuhan</span><span class="en">Ferry port</span></span>
+            <h3>Harbour Bay</h3>
+            <p><span class="id">Pelabuhan feri ke Singapura. Kami bisa antar dan jemput tamu sesuai jadwal kapal.</span><span class="en">Ferry terminal to Singapore. We can pick up and drop off guests around ferry times.</span></p>
+            <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Harbour+Bay+Batam" target="_blank" rel="noopener"><span class="id">Buka di Google Maps →</span><span class="en">Open in Google Maps →</span></a>
+          </div>
+        </article>
+        <article class="glass dest">
+          <div class="photo"><img src="galang.webp" alt="Pulau Galang" onerror="this.remove()"></div>
+          <div class="dest-body">
+            <span class="tag"><span class="id">Budaya</span><span class="en">Culture</span></span>
+            <h3>Pulau Galang</h3>
+            <p><span class="id">Pulau bersejarah dengan rumah adat Melayu dan suasana yang tenang.</span><span class="en">A historic island with traditional Malay houses and a quiet atmosphere.</span></p>
+            <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Pulau+Galang+Batam" target="_blank" rel="noopener"><span class="id">Buka di Google Maps →</span><span class="en">Open in Google Maps →</span></a>
+          </div>
+        </article>
+        <article class="glass dest">
+          <div class="photo"><img src="kuliner.webp" alt="Seafood Batam" onerror="this.remove()"></div>
+          <div class="dest-body">
+            <span class="tag"><span class="id">Kuliner</span><span class="en">Food</span></span>
+            <h3><span class="id">Seafood &amp; ikan bakar</span><span class="en">Seafood &amp; grilled fish</span></h3>
+            <p><span class="id">Makan malam seafood segar di tepi laut. Kami tahu tempat yang enak dan nyaman.</span><span class="en">Fresh seafood dinner by the sea. We know the good, comfortable spots.</span></p>
+            <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=seafood+Batam" target="_blank" rel="noopener"><span class="id">Cari di Google Maps →</span><span class="en">Search in Google Maps →</span></a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="kota" aria-labelledby="kota-title">
+      <div class="section-head">
+        <h2 id="kota-title"><span class="id">Kota &amp; kawasan</span><span class="en">City &amp; districts</span></h2>
+        <p>
+          <span class="id">Dari pusat kota sampai pinggir pulau, kami antar ke semua kawasan di Batam.</span>
+          <span class="en">From the city centre to the island's edges, we take you to every district in Batam.</span>
+        </p>
+      </div>
+      <div class="urban">
+        <div class="glass">
+          <div class="photo"><img src="kota.webp" alt="Batam Center" onerror="this.remove()"></div>
+          <h3>Batam Center</h3>
+          <p><span class="id">Pusat pemerintahan, perkantoran, dan terminal feri.</span><span class="en">Government offices, business district and ferry hub.</span></p>
+        </div>
+        <div class="glass">
+          <div class="photo"></div>
+          <h3>Sekupang</h3>
+          <p><span class="id">Pelabuhan dan kawasan pesisir barat kota.</span><span class="en">Port area and the west coast of the city.</span></p>
+        </div>
+        <div class="glass">
+          <div class="photo"></div>
+          <h3>Batu Aji</h3>
+          <p><span class="id">Kawasan pemukiman dan pusat perbelanjaan lokal.</span><span class="en">Residential area with local shopping centres.</span></p>
+        </div>
+        <div class="glass">
+          <div class="photo"></div>
+          <h3>Sei Panas</h3>
+          <p><span class="id">Kawasan ramai dekat pusat kota dan jalur utama.</span><span class="en">Busy district near the centre and main roads.</span></p>
+        </div>
+      </div>
+    </section>
+
+    <section id="peta" aria-labelledby="peta-title">
+      <div class="section-head">
+        <h2 id="peta-title"><span class="id">Peta Batam</span><span class="en">Batam map</span></h2>
+        <p><span class="id">Posisi kawasan dan destinasi secara garis besar.</span><span class="en">Rough positions of districts and places.</span></p>
+      </div>
+      <div class="glass map-wrap">
+        <svg viewBox="0 0 600 380" role="img" aria-labelledby="map-title map-desc">
+          <title id="map-title">Peta ilustrasi Batam</title>
+          <desc id="map-desc">Peta sederhana pulau Batam dengan titik destinasi dan kawasan kota.</desc>
+          <rect x="0" y="0" width="600" height="380" rx="24" fill="#e6f6f8"/>
+          <path d="M70,210 C110,120 220,90 300,110 C380,130 470,100 540,150 C570,200 530,265 455,285 C380,305 300,275 230,305 C160,325 80,285 70,210 Z" fill="#fff8d6" stroke="#e0a200" stroke-width="2"/>
+          <path d="M70,210 C50,260 120,330 230,320" fill="none" stroke="#0f7c8a" stroke-width="2" stroke-dasharray="6 6" opacity="0.5"/>
+          <g font-family="Poppins, Segoe UI, sans-serif" font-size="12" font-weight="600" fill="#1b1b1b">
+            <circle cx="110" cy="265" r="7" fill="#ffc20e" stroke="#fff" stroke-width="2"/>
+            <text x="122" y="268">Barelang</text>
+            <circle cx="500" cy="140" r="7" fill="#ffc20e" stroke="#fff" stroke-width="2"/>
+            <text x="440" y="128">Nongsa</text>
+            <circle cx="262" cy="200" r="7" fill="#0f7c8a" stroke="#fff" stroke-width="2"/>
+            <text x="274" y="204">Nagoya</text>
+            <circle cx="292" cy="222" r="7" fill="#0f7c8a" stroke="#fff" stroke-width="2"/>
+            <text x="304" y="240">Batam Center</text>
+            <circle cx="282" cy="250" r="6" fill="#ffc20e" stroke="#fff" stroke-width="2"/>
+            <text x="200" y="268">Harbour Bay</text>
+            <circle cx="190" cy="142" r="7" fill="#0f7c8a" stroke="#fff" stroke-width="2"/>
+            <text x="200" y="146">Sekupang</text>
+            <circle cx="240" cy="168" r="6" fill="#0f7c8a" stroke="#fff" stroke-width="2"/>
+            <text x="250" y="170">Batu Aji</text>
+            <circle cx="380" cy="190" r="6" fill="#0f7c8a" stroke="#fff" stroke-width="2"/>
+            <text x="392" y="194">Sei Panas</text>
+            <circle cx="520" cy="325" r="7" fill="#ffc20e" stroke="#fff" stroke-width="2"/>
+            <text x="440" y="346">Galang</text>
+          </g>
+          <text x="20" y="28" font-family="Poppins, Segoe UI, sans-serif" font-size="13" font-weight="700" fill="#1b1b1b">N ↑</text>
+        </svg>
+        <div>
+          <ul class="legend">
+            <li><span class="dot"></span><span><span class="id">Destinasi wisata</span><span class="en">Tourist places</span></span></li>
+            <li><span class="dot city"></span><span><span class="id">Kawasan kota dan pelabuhan</span><span class="en">City districts and ports</span></span></li>
+          </ul>
+          <p class="note"><span class="id">Peta ilustrasi, bukan skala asli. Untuk rute tepat, buka Google Maps dari tiap destinasi.</span><span class="en">Illustrative map, not to scale. For exact routes, open each place in Google Maps.</span></p>
+        </div>
+      </div>
+    </section>
+
+    <section id="harga" aria-labelledby="harga-title">
+      <div class="section-head">
+        <h2 id="harga-title"><span class="id">Harga sewa</span><span class="en">Rental prices</span></h2>
+        <p><span class="id">Harga mobil beserta driver, per hari.</span><span class="en">Car and driver, per day.</span></p>
+      </div>
+      <div class="glass price-card">
+        <div>
+          <h3><span class="id">Sewa mobil &amp; driver</span><span class="en">Car &amp; driver rental</span></h3>
+          <ul>
+            <li><span class="id">Driver profesional dan ramah</span><span class="en">Professional, friendly driver</span></li>
+            <li><span class="id">Standby menemani perjalanan</span><span class="en">On standby for your trip</span></li>
+            <li><span class="id">Area layanan seluruh Batam</span><span class="en">Service across all of Batam</span></li>
+            <li><span class="id">Operasional 24 / 7</span><span class="en">Open 24 / 7</span></li>
+          </ul>
+        </div>
+        <div class="prices" aria-label="Daftar harga per hari">
+          <div class="price-row"><span class="cur">Rupiah (IDR)</span><span class="amt">Rp 700.000</span></div>
+          <div class="price-row"><span class="cur">Ringgit (MYR)</span><span class="amt">RM 170</span></div>
+          <div class="price-row"><span class="cur">Dollar (USD)</span><span class="amt">$ 60</span></div>
+          <p class="price-note">
+            <span class="id">Harga start, per hari. Detail armada dan kapasitas dikonfirmasi saat booking.</span>
+            <span class="en">Starting prices, per day. Vehicle type and capacity are confirmed at booking.</span>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="booking" aria-labelledby="booking-title">
+      <div class="section-head">
+        <h2 id="booking-title"><span class="id">Cara booking &amp; pembayaran</span><span class="en">How to book &amp; pay</span></h2>
+        <p><span class="id">Dua cara mudah untuk memesan dan membayar.</span><span class="en">Two easy ways to book and pay.</span></p>
+      </div>
+      <div class="booking">
+        <div class="glass step">
+          <span class="num">1</span>
+          <h3><span class="id">Hubungi kami lewat WA</span><span class="en">Message us on WhatsApp</span></h3>
+          <p><span class="id">Kirim tanggal, jumlah orang, dan tujuan perjalananmu melalui salah satu nomor WhatsApp di atas.</span><span class="en">Send the date, number of people and where you want to go, using one of the WhatsApp numbers above.</span></p>
+        </div>
+        <div class="glass step">
+          <span class="num">2</span>
+          <h3><span class="id">Konfirmasi jadwal</span><span class="en">Confirm the schedule</span></h3>
+          <p><span class="id">Kami konfirmasi ketersediaan mobil dan driver, lalu harga final untuk perjalananmu.</span><span class="en">We confirm car and driver availability, then the final price for your trip.</span></p>
+        </div>
+        <div class="glass bank">
+          <span class="bank-label"><span class="id">Transfer bank</span><span class="en">Bank transfer</span></span>
+          <span class="bank-num" id="rek">0613150690</span>
+          <span class="bank-name">a.n. Amy Natriandy Adha</span>
+          <button class="copy-btn" type="button" id="copyBtn">
+            <span class="id">Salin nomor rekening</span><span class="en">Copy account number</span>
+          </button>
+          <span class="copy-msg" id="copyMsg" role="status" aria-live="polite"></span>
+        </div>
+        <div class="glass step">
+          <span class="num">3</span>
+          <h3><span class="id">Bayar &amp; siap berangkat</span><span class="en">Pay &amp; get ready to go</span></h3>
+          <p><span class="id">Setelah pembayaran terkonfirmasi, driver siap standby sesuai jadwalmu.</span><span class="en">Once payment is confirmed, your driver is ready on standby at your scheduled time.</span></p>
+        </div>
+      </div>
+    </section>
+
+    <div class="contact">
+      <h2><span class="id">Biarkan kami yang antar!</span><span class="en">Let us take you there!</span></h2>
+      <p>
+        <span class="id">Batam lebih seru kalau perjalananmu nyaman. Hubungi kami sekarang.</span>
+        <span class="en">Batam is more fun when the ride is comfortable. Get in touch now.</span>
+      </p>
+      <div class="cta-row center">
+        <a class="btn btn-wa" href="https://wa.me/628997070716" target="_blank" rel="noopener"><span class="id">Chat WA 1 ·</span><span class="en">WhatsApp 1 ·</span> 0899-7070-716</a>
+        <a class="btn btn-wa" href="https://wa.me/628136759556" target="_blank" rel="noopener"><span class="id">Chat WA 2 ·</span><span class="en">WhatsApp 2 ·</span> 0813-6759-556</a>
+      </div>
+    </div>
+
+    <p class="footer">
+      <span class="id">Driverbatamtour, teman perjalananmu di Batam.</span><span class="en">Driverbatamtour, your travel companion in Batam.</span><br>
+      TikTok: <a href="https://www.tiktok.com/@driverbatamtour" target="_blank" rel="noopener">@driverbatamtour</a>
+    </p>
+  </main>
+</div>
+
+<script>
+(function () {
+  var root = document.documentElement;
+  var langBtns = document.querySelectorAll(".lang button");
+
+  function setLang(lang) {
+    root.setAttribute("data-lang", lang);
+    root.setAttribute("lang", lang === "en" ? "en" : "id");
+    for (var i = 0; i < langBtns.length; i++) {
+      langBtns[i].setAttribute("aria-pressed", String(langBtns[i].getAttribute("data-set") === lang));
+    }
+    try { localStorage.setItem("dbt-lang", lang); } catch (e) {}
+  }
+  for (var i = 0; i < langBtns.length; i++) {
+    langBtns[i].addEventListener("click", function () { setLang(this.getAttribute("data-set")); });
+  }
+  setLang("id");
+
+  var btn = document.getElementById("copyBtn");
+  var msg = document.getElementById("copyMsg");
+  var num = document.getElementById("rek").textContent.trim();
+  btn.addEventListener("click", function () {
+    var en = root.getAttribute("data-lang") === "en";
+    function done(ok) {
+      msg.textContent = ok
+        ? (en ? "Account number copied." : "Nomor rekening tersalin.")
+        : (en ? "Copy it manually: " : "Salin manual: ") + num;
+    }
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(num).then(function () { done(true); }, function () { done(false); });
+    } else {
+      done(false);
+    }
+  });
+})();
+</script>
