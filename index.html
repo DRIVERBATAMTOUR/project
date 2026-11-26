@@ -1,12 +1,12 @@
 <!doctype html>
 <meta name="claude:viewport-fit-sides" content="cover">
 <title>Sewa Mobil dan Driver di Batam | Driverbatamtour</title>
-<meta name="description" content="Sewa mobil dan driver profesional di Batam, operasional 24 jam. Cocok untuk wisata, belanja, kuliner, dan antar-jemput ke Harbour Bay. Harga mulai Rp 700.000 per hari.">
-<meta name="keywords" content="sewa mobil Batam, driver Batam, tour Batam, rental mobil Batam, driver 24 jam Batam, sewa mobil dengan driver Batam">
+<meta name="description" content="Sewa mobil dan driver profesional di Batam, operasional 24 jam. Cocok untuk wisata, belanja, kuliner, dan antar-jemput bandara serta pelabuhan. Harga mulai Rp 700.000 per hari.">
+<meta name="keywords" content="sewa mobil Batam, driver Batam, tour Batam, rental mobil Batam, driver 24 jam Batam, paket tour Batam">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Sewa Mobil dan Driver di Batam | Driverbatamtour">
 <meta property="og:description" content="Driver profesional dan ramah, siap standby 24 jam di seluruh Batam. Booking lewat WhatsApp.">
-<meta property="og:image" content="https://driverbatamtour.github.io/project/logo.png">
+<meta property="og:image" content="https://driverbatamtour.github.io/project/foto/hero.webp">
 <meta name="twitter:card" content="summary_large_image">
 <script type="application/ld+json">
 {
@@ -14,9 +14,9 @@
   "@type": "LocalBusiness",
   "name": "Driverbatamtour",
   "description": "Sewa mobil dan driver profesional di Batam, operasional 24 jam.",
-  "image": "https://driverbatamtour.github.io/project/logo.png",
+  "image": "https://driverbatamtour.github.io/project/foto/hero.webp",
   "telephone": ["+62 899-7070-716", "+62 813-6759-556"],
-  "priceRange": "Rp 700.000 - per hari",
+  "priceRange": "Rp 700.000 per hari",
   "openingHours": "Mo-Su 00:00-23:59",
   "areaServed": { "@type": "City", "name": "Batam" },
   "address": { "@type": "PostalAddress", "addressLocality": "Batam", "addressRegion": "Kepulauan Riau", "addressCountry": "ID" },
@@ -25,7 +25,7 @@
 </script>
 <style>
 /* Layout: one scrolling page. Glass cards float over soft white and yellow fields.
-   Tokens: white ground, warm yellow accent, near-black ink. */
+   Tokens: white ground, warm yellow accent, near-black ink, sea teal for links to maps. */
 :root {
   --bg: #fffdf5;
   --ink: #1b1b1b;
@@ -80,12 +80,10 @@ h1, h2, h3 { font-family: var(--font-display); line-height: 1.2; text-wrap: bala
 p { margin: 0; }
 :focus-visible { outline: 3px solid var(--yellow-deep); outline-offset: 3px; border-radius: 12px; }
 
-/* Language switch: the html lang decides which copy shows. Indonesian is the default. */
+/* Language switch: html[data-lang] decides which copy shows. Indonesian is the default. */
 .en { display: none; }
-html[data-lang="en"] .en { display: revert; }
+html[data-lang="en"] .en { display: inline; }
 html[data-lang="en"] .id { display: none; }
-html[data-lang="en"] span.en { display: inline; }
-html[data-lang="en"] .id.inline-only { display: none; }
 
 .wrap { max-width: 1040px; margin: 0 auto; padding-block: 24px 56px; }
 
@@ -106,12 +104,10 @@ html[data-lang="en"] .id.inline-only { display: none; }
 }
 .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; min-width: 0; }
 .brand img { width: 44px; height: 44px; object-fit: cover; object-position: 50% 45%; border-radius: 12px; }
-.brand span.name { font-family: var(--font-display); font-weight: 700; font-size: 1rem; white-space: nowrap; }
+.brand .name { font-family: var(--font-display); font-weight: 700; font-size: 1rem; white-space: nowrap; }
 .nav-right { display: flex; align-items: center; gap: 6px; }
 .nav-links { display: flex; gap: 2px; flex-wrap: wrap; justify-content: flex-end; }
-.nav-links a {
-  text-decoration: none; font-size: 0.875rem; font-weight: 500; padding: 8px 10px; border-radius: 999px;
-}
+.nav-links a { text-decoration: none; font-size: 0.875rem; font-weight: 500; padding: 8px 10px; border-radius: 999px; }
 .nav-links a:hover { background: rgba(255, 194, 14, 0.25); }
 .lang {
   display: inline-flex; background: #fff; border-radius: 999px; padding: 3px; border: 1px solid var(--yellow-soft);
@@ -144,22 +140,23 @@ html[data-lang="en"] .id.inline-only { display: none; }
 .btn:hover { transform: translateY(-2px); }
 .btn-wa { background: var(--wa); color: #fff; box-shadow: 0 10px 24px rgba(31, 168, 85, 0.3); }
 .btn-wa small { font-weight: 500; opacity: 0.9; font-variant-numeric: tabular-nums; }
-.btn-ghost { background: #fff; color: var(--ink); border: 1px solid var(--yellow); }
 .hero-visual { position: relative; }
 .hero-visual .glass { padding: 12px; border-radius: 28px; }
-.hero-visual img { border-radius: 20px; width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; background: linear-gradient(135deg, #ffe680, #ffc20e); }
+.hero-visual img { border-radius: 20px; width: 100%; height: auto; }
 .badge {
   position: absolute; left: -12px; bottom: 18px; padding: 10px 14px; border-radius: 16px;
   font-size: 0.85rem; font-weight: 600; background: #fff; box-shadow: var(--shadow);
 }
 .badge b { color: var(--yellow-deep); }
 
-/* Photo placeholder: shows a soft field until the file is added. */
+/* Photos: every photo sits in a frame with a fixed ratio and a soft yellow ground */
 .photo {
   position: relative; border-radius: 18px; overflow: hidden; aspect-ratio: 4 / 3;
   background: linear-gradient(135deg, #ffe680 0%, #ffc20e 60%, #ffb000 100%);
 }
 .photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.photo.tall { aspect-ratio: 4 / 5; }
+.photo.tall img { object-position: center 30%; }
 
 /* Sections */
 section { margin-top: 56px; }
@@ -176,10 +173,21 @@ section { margin-top: 56px; }
 .feature h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: 6px; }
 .feature p { color: var(--muted); font-size: 0.93rem; }
 
+/* Fleet */
+.fleet-photo { padding: 12px; border-radius: 28px; margin-bottom: 16px; }
+.fleet-photo img { border-radius: 20px; width: 100%; height: auto; }
+.fleet { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 14px; }
+.car { padding: 18px; display: flex; flex-direction: column; gap: 4px; }
+.car h3 { font-size: 1rem; font-weight: 700; }
+.car p { color: var(--muted); font-size: 0.88rem; }
+.seat {
+  align-self: flex-start; margin-top: 8px; font-size: 0.78rem; font-weight: 600;
+  background: var(--yellow-soft); padding: 4px 10px; border-radius: 999px; font-variant-numeric: tabular-nums;
+}
+
 /* Destinations */
 .dest-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 18px; }
 .dest { padding: 12px 12px 18px; display: flex; flex-direction: column; gap: 12px; }
-.dest .photo { border-radius: 16px; }
 .dest-body { padding: 0 8px; display: flex; flex-direction: column; gap: 6px; flex: 1; }
 .dest h3 { font-size: 1.1rem; font-weight: 700; }
 .dest p { color: var(--muted); font-size: 0.93rem; }
@@ -187,32 +195,42 @@ section { margin-top: 56px; }
   align-self: flex-start; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.04em;
   background: var(--yellow-soft); color: var(--ink); padding: 4px 10px; border-radius: 999px;
 }
-.map-link {
-  margin-top: auto; font-weight: 600; font-size: 0.9rem; color: var(--sea); text-decoration: none;
-  padding-top: 8px;
-}
+.map-link { margin-top: auto; font-weight: 600; font-size: 0.9rem; color: var(--sea); text-decoration: none; padding-top: 8px; }
 .map-link:hover { text-decoration: underline; }
 
+/* Itinerary */
+.paket { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.day { padding: 24px; }
+.day h3 { font-size: 1.1rem; font-weight: 700; display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
+.day .pin {
+  display: inline-grid; place-items: center; min-width: 34px; height: 34px; border-radius: 50%;
+  background: var(--ink); color: var(--yellow); font-weight: 700; font-family: var(--font-display); font-size: 0.9rem;
+}
+.day ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; color: var(--muted); font-size: 0.93rem; }
+.day li::before { content: "✓"; color: var(--yellow-deep); font-weight: 800; margin-right: 8px; }
+.paket-note { margin-top: 14px; font-size: 0.85rem; color: var(--muted); }
+
 /* Urban */
-.urban { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; }
-.urban .glass { padding: 14px; border-radius: 22px; display: flex; flex-direction: column; gap: 10px; }
-.urban h3 { font-size: 1rem; font-weight: 700; padding: 0 6px; }
-.urban p { color: var(--muted); font-size: 0.88rem; padding: 0 6px 6px; }
+.urban { display: flex; flex-wrap: wrap; gap: 10px; }
+.chip {
+  font-weight: 600; font-size: 0.92rem; padding: 10px 16px; border-radius: 999px;
+  background: rgba(255, 255, 255, 0.75); border: 1px solid var(--yellow-soft);
+}
 
 /* Map */
 .map-wrap { display: grid; grid-template-columns: 1.3fr 1fr; gap: 20px; align-items: center; padding: 22px; border-radius: 28px; }
 .map-wrap svg { width: 100%; height: auto; display: block; }
-.legend { display: grid; gap: 10px; }
-.legend li { list-style: none; display: flex; align-items: flex-start; gap: 10px; color: var(--muted); font-size: 0.92rem; }
-.legend ul { padding: 0; margin: 0; display: grid; gap: 10px; }
+.legend { display: grid; gap: 10px; list-style: none; padding: 0; margin: 0; }
+.legend li { display: flex; align-items: flex-start; gap: 10px; color: var(--muted); font-size: 0.92rem; }
 .dot { width: 12px; height: 12px; border-radius: 50%; background: var(--yellow-deep); flex: none; margin-top: 6px; border: 2px solid #fff; box-shadow: 0 0 0 1px var(--yellow-deep); }
 .dot.city { background: var(--sea); box-shadow: 0 0 0 1px var(--sea); }
-.note { font-size: 0.8rem; color: var(--muted); margin-top: 6px; }
+.note { font-size: 0.8rem; color: var(--muted); margin-top: 10px; }
+
+/* Gallery */
+.gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
 
 /* Pricing */
-.price-card {
-  display: grid; grid-template-columns: 1fr 1fr; gap: 28px; padding: 32px; border-radius: 28px; align-items: center;
-}
+.price-card { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; padding: 32px; border-radius: 28px; align-items: center; }
 .price-card h3 { font-size: 1.3rem; font-weight: 700; }
 .price-card ul { list-style: none; padding: 0; margin: 14px 0 0; display: grid; gap: 8px; color: var(--muted); font-size: 0.95rem; }
 .price-card li::before { content: "✓"; color: var(--yellow-deep); font-weight: 800; margin-right: 8px; }
@@ -247,6 +265,10 @@ section { margin-top: 56px; }
 }
 .copy-btn:active { transform: scale(0.98); }
 .copy-msg { font-size: 0.85rem; color: var(--muted); min-height: 1.2em; }
+.qr-box {
+  display: grid; place-items: center; text-align: center; aspect-ratio: 1 / 1; max-width: 220px; width: 100%;
+  border: 2px dashed var(--yellow-deep); border-radius: 18px; padding: 16px; color: var(--muted); font-size: 0.9rem; background: rgba(255, 255, 255, 0.6);
+}
 
 /* Contact strip */
 .contact {
@@ -259,6 +281,10 @@ section { margin-top: 56px; }
 .footer { text-align: center; color: var(--muted); font-size: 0.85rem; margin-top: 28px; }
 .footer a { font-weight: 600; text-decoration: none; }
 
+@media (max-width: 860px) {
+  .paket, .gallery { grid-template-columns: 1fr; }
+  .gallery .photo { aspect-ratio: 4 / 5; }
+}
 @media (max-width: 760px) {
   .hero { grid-template-columns: 1fr; padding: 28px 22px; text-align: left; }
   .hero-visual { order: -1; }
@@ -283,6 +309,7 @@ section { margin-top: 56px; }
     </a>
     <div class="nav-right">
       <nav class="nav-links" aria-label="Navigasi">
+        <a href="#armada"><span class="id">Armada</span><span class="en">Fleet</span></a>
         <a href="#destinasi"><span class="id">Destinasi</span><span class="en">Places</span></a>
         <a href="#harga"><span class="id">Harga</span><span class="en">Prices</span></a>
         <a href="#booking"><span class="id">Booking</span><span class="en">Booking</span></a>
@@ -317,7 +344,7 @@ section { margin-top: 56px; }
       </div>
       <div class="hero-visual">
         <div class="glass">
-          <img src="hero.webp" alt="Mobil dengan latar Jembatan Barelang" onerror="this.src='logo.png'; this.style.objectFit='contain'; this.style.background='#fff';">
+          <img src="foto/hero.webp" alt="Poster Jom Holiday ke Batam bersama Driverbatamtour dengan latar Jembatan Barelang">
         </div>
         <div class="badge">
           <span class="id">Mulai dari <b>Rp 700.000</b> / hari</span>
@@ -326,17 +353,96 @@ section { margin-top: 56px; }
       </div>
     </div>
 
+    <section id="layanan" aria-labelledby="layanan-title">
+      <div class="section-head">
+        <h2 id="layanan-title"><span class="id">Layanan kami</span><span class="en">Our service</span></h2>
+        <p>
+          <span class="id">Tour dan travel dengan driver yang siap mengantar ke mana saja di Batam.</span>
+          <span class="en">Tours and travel with a driver ready to take you anywhere in Batam.</span>
+        </p>
+      </div>
+      <div class="grid-4">
+        <article class="glass feature">
+          <div class="icon" aria-hidden="true">D</div>
+          <h3><span class="id">Driver profesional</span><span class="en">Professional driver</span></h3>
+          <p><span class="id">Berpengalaman, ramah, dan paham rute serta titik wisata di Batam.</span><span class="en">Experienced, friendly, and familiar with Batam's routes and spots.</span></p>
+        </article>
+        <article class="glass feature">
+          <div class="icon" aria-hidden="true">24</div>
+          <h3><span class="id">Siap 24 / 7</span><span class="en">Open 24 / 7</span></h3>
+          <p><span class="id">Standby kapan pun kamu butuh, termasuk perjalanan pagi buta atau malam hari.</span><span class="en">On standby whenever you need us, including early mornings and late nights.</span></p>
+        </article>
+        <article class="glass feature">
+          <div class="icon" aria-hidden="true">A</div>
+          <h3><span class="id">Antar jemput</span><span class="en">Airport &amp; port transfer</span></h3>
+          <p><span class="id">Jemput di bandara atau pelabuhan, lalu antar ke hotel atau tujuan wisata.</span><span class="en">Pick-up at the airport or port, then drive to your hotel or destination.</span></p>
+        </article>
+        <article class="glass feature">
+          <div class="icon" aria-hidden="true">F</div>
+          <h3><span class="id">Keluarga &amp; rombongan</span><span class="en">Families &amp; groups</span></h3>
+          <p><span class="id">Nyaman untuk keluarga, pasangan, maupun rombongan, termasuk tamu dari Malaysia dan Singapura.</span><span class="en">Comfortable for families, couples and groups, including guests from Malaysia and Singapore.</span></p>
+        </article>
+      </div>
+    </section>
+
+    <section id="armada" aria-labelledby="armada-title">
+      <div class="section-head">
+        <h2 id="armada-title"><span class="id">Armada kami</span><span class="en">Our fleet</span></h2>
+        <p><span class="id">Pilih sesuai jumlah penumpang dan jenis perjalananmu.</span><span class="en">Choose the vehicle that fits your group and your trip.</span></p>
+      </div>
+      <div class="glass fleet-photo">
+        <img src="foto/armada.webp" alt="Armada Driver Batam Tour: Van Hi Ace, New Innova Zenix, New Avanza, New Xenia, New Xpander, New Rocky, dan New Agya">
+      </div>
+      <div class="fleet">
+        <article class="glass car">
+          <h3>Van Hi Ace</h3>
+          <p><span class="id">Van putih besar</span><span class="en">Large white van</span></p>
+          <span class="seat"><span class="id">12 penumpang</span><span class="en">12 passengers</span></span>
+        </article>
+        <article class="glass car">
+          <h3>New Innova Zenix</h3>
+          <p><span class="id">MPV silver</span><span class="en">Silver MPV</span></p>
+          <span class="seat"><span class="id">7 penumpang</span><span class="en">7 passengers</span></span>
+        </article>
+        <article class="glass car">
+          <h3>New Avanza</h3>
+          <p><span class="id">MPV putih</span><span class="en">White MPV</span></p>
+          <span class="seat"><span class="id">7 penumpang</span><span class="en">7 passengers</span></span>
+        </article>
+        <article class="glass car">
+          <h3>New Xenia</h3>
+          <p><span class="id">MPV merah</span><span class="en">Red MPV</span></p>
+          <span class="seat"><span class="id">7 penumpang</span><span class="en">7 passengers</span></span>
+        </article>
+        <article class="glass car">
+          <h3>New Xpander</h3>
+          <p><span class="id">MPV hitam</span><span class="en">Black MPV</span></p>
+          <span class="seat"><span class="id">7 penumpang</span><span class="en">7 passengers</span></span>
+        </article>
+        <article class="glass car">
+          <h3>New Rocky</h3>
+          <p><span class="id">SUV merah</span><span class="en">Red SUV</span></p>
+          <span class="seat"><span class="id">5 penumpang</span><span class="en">5 passengers</span></span>
+        </article>
+        <article class="glass car">
+          <h3>New Agya</h3>
+          <p><span class="id">Hatchback kuning</span><span class="en">Yellow hatchback</span></p>
+          <span class="seat"><span class="id">5 penumpang</span><span class="en">5 passengers</span></span>
+        </article>
+      </div>
+    </section>
+
     <section id="destinasi" aria-labelledby="dest-title">
       <div class="section-head">
         <h2 id="dest-title"><span class="id">Destinasi wisata di Batam</span><span class="en">Places to visit in Batam</span></h2>
         <p>
-          <span class="id">Tempat favorit yang sering kami antar. Klik lokasi untuk membuka Google Maps.</span>
-          <span class="en">Favourite spots we often take guests to. Tap a place to open it in Google Maps.</span>
+          <span class="id">Tempat favorit yang sering kami antar. Tekan nama tempat untuk membuka Google Maps.</span>
+          <span class="en">Favourite spots we often take guests to. Tap a place name to open it in Google Maps.</span>
         </p>
       </div>
       <div class="dest-grid">
         <article class="glass dest">
-          <div class="photo"><img src="barelang.webp" alt="Jembatan Barelang" onerror="this.remove()"></div>
+          <div class="photo"><img src="foto/barelang.webp" alt="Rombongan tamu di depan Jembatan Barelang"></div>
           <div class="dest-body">
             <span class="tag"><span class="id">Ikon kota</span><span class="en">Landmark</span></span>
             <h3>Jembatan Barelang</h3>
@@ -345,49 +451,109 @@ section { margin-top: 56px; }
           </div>
         </article>
         <article class="glass dest">
-          <div class="photo"><img src="nongsa.webp" alt="Pantai Nongsa" onerror="this.remove()"></div>
+          <div class="photo"><img src="foto/puncak.webp" alt="Gerbang Puncak Beliung Batam"></div>
           <div class="dest-body">
-            <span class="tag"><span class="id">Pantai</span><span class="en">Beach</span></span>
-            <h3>Pantai Nongsa</h3>
-            <p><span class="id">Pantai dengan resor dan pemandangan laut yang tenang. Pas untuk liburan santai.</span><span class="en">Beachfront resorts and calm sea views. Perfect for a relaxed day out.</span></p>
-            <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Pantai+Nongsa+Batam" target="_blank" rel="noopener"><span class="id">Buka di Google Maps →</span><span class="en">Open in Google Maps →</span></a>
+            <span class="tag"><span class="id">Wisata alam</span><span class="en">Nature</span></span>
+            <h3>Puncak Beliung</h3>
+            <p><span class="id">Titik pandang dengan pemandangan laut dan perbukitan Batam.</span><span class="en">A viewpoint with sea and hill views across Batam.</span></p>
+            <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Puncak+Beliung+Batam" target="_blank" rel="noopener"><span class="id">Buka di Google Maps →</span><span class="en">Open in Google Maps →</span></a>
           </div>
         </article>
         <article class="glass dest">
-          <div class="photo"><img src="nagoya.webp" alt="Kawasan Nagoya" onerror="this.remove()"></div>
+          <div class="photo tall"><img src="foto/masjid.webp" alt="Masjid Tanwirun Najah Batam"></div>
           <div class="dest-body">
-            <span class="tag"><span class="id">Belanja</span><span class="en">Shopping</span></span>
-            <h3>Nagoya</h3>
-            <p><span class="id">Pusat belanja, kafe, dan kuliner malam. Mudah dijangkau dari pusat kota.</span><span class="en">Shopping, cafés and late-night food. Easy to reach from the city centre.</span></p>
-            <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Nagoya+Batam" target="_blank" rel="noopener"><span class="id">Buka di Google Maps →</span><span class="en">Open in Google Maps →</span></a>
+            <span class="tag"><span class="id">Religi</span><span class="en">Religious</span></span>
+            <h3>Masjid Tanwirun Najah</h3>
+            <p><span class="id">Masjid dengan arsitektur modern yang ikonik dan mudah difoto.</span><span class="en">A mosque with iconic modern architecture, easy to photograph.</span></p>
+            <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Masjid+Tanwirun+Najah+Batam" target="_blank" rel="noopener"><span class="id">Buka di Google Maps →</span><span class="en">Open in Google Maps →</span></a>
           </div>
         </article>
         <article class="glass dest">
-          <div class="photo"><img src="harbour-bay.webp" alt="Harbour Bay" onerror="this.remove()"></div>
+          <div class="photo tall"><img src="foto/zoo.webp" alt="Pintu masuk Batam Zoo Paradise"></div>
           <div class="dest-body">
-            <span class="tag"><span class="id">Pelabuhan</span><span class="en">Ferry port</span></span>
-            <h3>Harbour Bay</h3>
-            <p><span class="id">Pelabuhan feri ke Singapura. Kami bisa antar dan jemput tamu sesuai jadwal kapal.</span><span class="en">Ferry terminal to Singapore. We can pick up and drop off guests around ferry times.</span></p>
-            <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Harbour+Bay+Batam" target="_blank" rel="noopener"><span class="id">Buka di Google Maps →</span><span class="en">Open in Google Maps →</span></a>
+            <span class="tag"><span class="id">Keluarga</span><span class="en">Family</span></span>
+            <h3>Batam Zoo Paradise</h3>
+            <p><span class="id">Kebun binatang yang seru untuk keluarga dan anak-anak.</span><span class="en">A fun zoo for families and kids.</span></p>
+            <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Batam+Zoo+Paradise" target="_blank" rel="noopener"><span class="id">Buka di Google Maps →</span><span class="en">Open in Google Maps →</span></a>
           </div>
         </article>
         <article class="glass dest">
-          <div class="photo"><img src="galang.webp" alt="Pulau Galang" onerror="this.remove()"></div>
+          <div class="photo tall"><img src="foto/dino.webp" alt="Welcome to Dino's Gate Batam"></div>
           <div class="dest-body">
-            <span class="tag"><span class="id">Budaya</span><span class="en">Culture</span></span>
-            <h3>Pulau Galang</h3>
-            <p><span class="id">Pulau bersejarah dengan rumah adat Melayu dan suasana yang tenang.</span><span class="en">A historic island with traditional Malay houses and a quiet atmosphere.</span></p>
-            <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Pulau+Galang+Batam" target="_blank" rel="noopener"><span class="id">Buka di Google Maps →</span><span class="en">Open in Google Maps →</span></a>
+            <span class="tag"><span class="id">Keluarga</span><span class="en">Family</span></span>
+            <h3>Dino's Gate</h3>
+            <p><span class="id">Taman bertema dinosaurus di tengah hutan, cocok untuk anak-anak.</span><span class="en">A dinosaur-themed park in the woods, great for children.</span></p>
+            <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Dino%27s+Gate+Batam" target="_blank" rel="noopener"><span class="id">Buka di Google Maps →</span><span class="en">Open in Google Maps →</span></a>
           </div>
         </article>
         <article class="glass dest">
-          <div class="photo"><img src="kuliner.webp" alt="Seafood Batam" onerror="this.remove()"></div>
+          <div class="photo tall"><img src="foto/batamia.webp" alt="Batamia Oleh Oleh Batam"></div>
+          <div class="dest-body">
+            <span class="tag"><span class="id">Oleh-oleh</span><span class="en">Souvenirs</span></span>
+            <h3>Batamia Oleh-Oleh</h3>
+            <p><span class="id">Pusat oleh-oleh khas Batam untuk dibawa pulang.</span><span class="en">A Batam souvenir centre for taking something home.</span></p>
+            <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Batamia+Oleh+Oleh+Batam" target="_blank" rel="noopener"><span class="id">Buka di Google Maps →</span><span class="en">Open in Google Maps →</span></a>
+          </div>
+        </article>
+        <article class="glass dest">
+          <div class="photo tall"><img src="foto/angkringan.webp" alt="Angkringan Tepi Danau Batam"></div>
+          <div class="dest-body">
+            <span class="tag"><span class="id">Kuliner malam</span><span class="en">Night food</span></span>
+            <h3>Angkringan Tepi Danau</h3>
+            <p><span class="id">Nongkrong dan makan malam di tepi danau, suasananya tenang.</span><span class="en">Dinner and hangouts by the lake, in a calm setting.</span></p>
+            <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Angkringan+Tepi+Danau+Batam" target="_blank" rel="noopener"><span class="id">Buka di Google Maps →</span><span class="en">Open in Google Maps →</span></a>
+          </div>
+        </article>
+        <article class="glass dest">
+          <div class="photo tall"><img src="foto/bluefire.webp" alt="Blue Fire Batam"></div>
           <div class="dest-body">
             <span class="tag"><span class="id">Kuliner</span><span class="en">Food</span></span>
-            <h3><span class="id">Seafood &amp; ikan bakar</span><span class="en">Seafood &amp; grilled fish</span></h3>
-            <p><span class="id">Makan malam seafood segar di tepi laut. Kami tahu tempat yang enak dan nyaman.</span><span class="en">Fresh seafood dinner by the sea. We know the good, comfortable spots.</span></p>
-            <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=seafood+Batam" target="_blank" rel="noopener"><span class="id">Cari di Google Maps →</span><span class="en">Search in Google Maps →</span></a>
+            <h3>Blue Fire</h3>
+            <p><span class="id">Tempat makan dan nongkrong favorit tamu kami.</span><span class="en">A dining and hangout spot our guests love.</span></p>
+            <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Blue+Fire+Batam" target="_blank" rel="noopener"><span class="id">Buka di Google Maps →</span><span class="en">Open in Google Maps →</span></a>
           </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="paket" aria-labelledby="paket-title">
+      <div class="section-head">
+        <h2 id="paket-title"><span class="id">Paket 3 hari 2 malam</span><span class="en">3 days 2 nights package</span></h2>
+        <p><span class="id">Contoh rencana perjalanan. Bisa disesuaikan dengan keinginanmu.</span><span class="en">A sample itinerary. It can be adjusted to what you want.</span></p>
+      </div>
+      <div class="paket">
+        <article class="glass day">
+          <h3><span class="pin">1</span><span class="id">Hari 1</span><span class="en">Day 1</span></h3>
+          <ul>
+            <li><span class="id">Penjemputan pelabuhan / bandara</span><span class="en">Pick-up at port / airport</span></li>
+            <li><span class="id">Masjid Raya Batam &amp; Welcome to Batam</span><span class="en">Masjid Raya Batam &amp; Welcome to Batam</span></li>
+            <li><span class="id">Shopping oleh-oleh Batam</span><span class="en">Batam souvenir shopping</span></li>
+            <li><span class="id">Makan siang</span><span class="en">Lunch</span></li>
+            <li><span class="id">Shopping Nagoya Hill</span><span class="en">Shopping at Nagoya Hill</span></li>
+            <li><span class="id">Makan malam &amp; check-in hotel</span><span class="en">Dinner &amp; hotel check-in</span></li>
+          </ul>
+        </article>
+        <article class="glass day">
+          <h3><span class="pin">2</span><span class="id">Hari 2</span><span class="en">Day 2</span></h3>
+          <ul>
+            <li><span class="id">Sarapan di hotel</span><span class="en">Breakfast at the hotel</span></li>
+            <li><span class="id">Puncak Beliung</span><span class="en">Puncak Beliung</span></li>
+            <li><span class="id">Saung Budaya Batam</span><span class="en">Saung Budaya Batam</span></li>
+            <li><span class="id">Masjid Sultan Batam</span><span class="en">Masjid Sultan Batam</span></li>
+            <li><span class="id">Makan siang di Jembatan 1</span><span class="en">Lunch at Jembatan 1</span></li>
+            <li><span class="id">Massage</span><span class="en">Massage</span></li>
+            <li><span class="id">Mula Cafe</span><span class="en">Mula Cafe</span></li>
+            <li><span class="id">Makan malam &amp; kembali ke hotel</span><span class="en">Dinner &amp; back to the hotel</span></li>
+          </ul>
+        </article>
+        <article class="glass day">
+          <h3><span class="pin">3</span><span class="id">Hari 3</span><span class="en">Day 3</span></h3>
+          <ul>
+            <li><span class="id">Sarapan &amp; check out</span><span class="en">Breakfast &amp; check-out</span></li>
+            <li><span class="id">Batam Zoo</span><span class="en">Batam Zoo</span></li>
+            <li><span class="id">Makan siang</span><span class="en">Lunch</span></li>
+            <li><span class="id">Antar ke pelabuhan</span><span class="en">Drop-off at the port</span></li>
+          </ul>
         </article>
       </div>
     </section>
@@ -396,31 +562,17 @@ section { margin-top: 56px; }
       <div class="section-head">
         <h2 id="kota-title"><span class="id">Kota &amp; kawasan</span><span class="en">City &amp; districts</span></h2>
         <p>
-          <span class="id">Dari pusat kota sampai pinggir pulau, kami antar ke semua kawasan di Batam.</span>
-          <span class="en">From the city centre to the island's edges, we take you to every district in Batam.</span>
+          <span class="id">Dari pusat kota sampai pelabuhan, kami antar ke semua kawasan di Batam.</span>
+          <span class="en">From the city centre to the ports, we take you to every district in Batam.</span>
         </p>
       </div>
       <div class="urban">
-        <div class="glass">
-          <div class="photo"><img src="kota.webp" alt="Batam Center" onerror="this.remove()"></div>
-          <h3>Batam Center</h3>
-          <p><span class="id">Pusat pemerintahan, perkantoran, dan terminal feri.</span><span class="en">Government offices, business district and ferry hub.</span></p>
-        </div>
-        <div class="glass">
-          <div class="photo"></div>
-          <h3>Sekupang</h3>
-          <p><span class="id">Pelabuhan dan kawasan pesisir barat kota.</span><span class="en">Port area and the west coast of the city.</span></p>
-        </div>
-        <div class="glass">
-          <div class="photo"></div>
-          <h3>Batu Aji</h3>
-          <p><span class="id">Kawasan pemukiman dan pusat perbelanjaan lokal.</span><span class="en">Residential area with local shopping centres.</span></p>
-        </div>
-        <div class="glass">
-          <div class="photo"></div>
-          <h3>Sei Panas</h3>
-          <p><span class="id">Kawasan ramai dekat pusat kota dan jalur utama.</span><span class="en">Busy district near the centre and main roads.</span></p>
-        </div>
+        <span class="chip">Batam Center</span>
+        <span class="chip">Nagoya</span>
+        <span class="chip">Sekupang</span>
+        <span class="chip">Batu Aji</span>
+        <span class="chip">Sei Panas</span>
+        <span class="chip">Harbour Bay</span>
       </div>
     </section>
 
@@ -439,8 +591,6 @@ section { margin-top: 56px; }
           <g font-family="Poppins, Segoe UI, sans-serif" font-size="12" font-weight="600" fill="#1b1b1b">
             <circle cx="110" cy="265" r="7" fill="#ffc20e" stroke="#fff" stroke-width="2"/>
             <text x="122" y="268">Barelang</text>
-            <circle cx="500" cy="140" r="7" fill="#ffc20e" stroke="#fff" stroke-width="2"/>
-            <text x="440" y="128">Nongsa</text>
             <circle cx="262" cy="200" r="7" fill="#0f7c8a" stroke="#fff" stroke-width="2"/>
             <text x="274" y="204">Nagoya</text>
             <circle cx="292" cy="222" r="7" fill="#0f7c8a" stroke="#fff" stroke-width="2"/>
@@ -453,8 +603,8 @@ section { margin-top: 56px; }
             <text x="250" y="170">Batu Aji</text>
             <circle cx="380" cy="190" r="6" fill="#0f7c8a" stroke="#fff" stroke-width="2"/>
             <text x="392" y="194">Sei Panas</text>
-            <circle cx="520" cy="325" r="7" fill="#ffc20e" stroke="#fff" stroke-width="2"/>
-            <text x="440" y="346">Galang</text>
+            <circle cx="500" cy="140" r="6" fill="#ffc20e" stroke="#fff" stroke-width="2"/>
+            <text x="440" y="128">Puncak Beliung</text>
           </g>
           <text x="20" y="28" font-family="Poppins, Segoe UI, sans-serif" font-size="13" font-weight="700" fill="#1b1b1b">N ↑</text>
         </svg>
@@ -465,6 +615,18 @@ section { margin-top: 56px; }
           </ul>
           <p class="note"><span class="id">Peta ilustrasi, bukan skala asli. Untuk rute tepat, buka Google Maps dari tiap destinasi.</span><span class="en">Illustrative map, not to scale. For exact routes, open each place in Google Maps.</span></p>
         </div>
+      </div>
+    </section>
+
+    <section id="galeri" aria-labelledby="galeri-title">
+      <div class="section-head">
+        <h2 id="galeri-title"><span class="id">Momen tamu kami</span><span class="en">Moments with our guests</span></h2>
+        <p><span class="id">Beberapa perjalanan bersama tamu kami di Batam.</span><span class="en">Some trips with our guests around Batam.</span></p>
+      </div>
+      <div class="gallery">
+        <div class="photo tall"><img src="foto/rooftop.webp" alt="Tamu berfoto di depan tulisan Welcome to Batam"></div>
+        <div class="photo tall"><img src="foto/gate.webp" alt="Tamu berfoto di gerbang khas Batam"></div>
+        <div class="photo tall"><img src="foto/boat.webp" alt="Tamu berkeliling dengan perahu, Jembatan Barelang di latar"></div>
       </div>
     </section>
 
@@ -520,6 +682,12 @@ section { margin-top: 56px; }
           </button>
           <span class="copy-msg" id="copyMsg" role="status" aria-live="polite"></span>
         </div>
+        <div class="glass bank">
+          <span class="bank-label">QRIS Driverbatamtour</span>
+          <div class="qr-box">
+            <span><span class="id">Kode QRIS Driverbatamtour akan ditampilkan di sini.</span><span class="en">The Driverbatamtour QRIS code will appear here.</span></span>
+          </div>
+        </div>
         <div class="glass step">
           <span class="num">3</span>
           <h3><span class="id">Bayar &amp; siap berangkat</span><span class="en">Pay &amp; get ready to go</span></h3>
@@ -563,7 +731,9 @@ section { margin-top: 56px; }
   for (var i = 0; i < langBtns.length; i++) {
     langBtns[i].addEventListener("click", function () { setLang(this.getAttribute("data-set")); });
   }
-  setLang("id");
+  var saved = null;
+  try { saved = localStorage.getItem("dbt-lang"); } catch (e) {}
+  setLang(saved === "en" ? "en" : "id");
 
   var btn = document.getElementById("copyBtn");
   var msg = document.getElementById("copyMsg");
