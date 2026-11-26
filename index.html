@@ -265,10 +265,29 @@ section { margin-top: 56px; }
 }
 .copy-btn:active { transform: scale(0.98); }
 .copy-msg { font-size: 0.85rem; color: var(--muted); min-height: 1.2em; }
-.qr-box {
-  display: grid; place-items: center; text-align: center; aspect-ratio: 1 / 1; max-width: 220px; width: 100%;
-  border: 2px dashed var(--yellow-deep); border-radius: 18px; padding: 16px; color: var(--muted); font-size: 0.9rem; background: rgba(255, 255, 255, 0.6);
+
+/* Booking form */
+.form-card { padding: 28px; display: grid; gap: 18px; }
+.form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.field { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.field.full { grid-column: 1 / -1; }
+.field label, .field legend { font-size: 0.85rem; font-weight: 600; }
+.field input, .field select, .field textarea {
+  font: inherit; font-size: 0.95rem; width: 100%; min-height: 46px; padding: 12px 14px;
+  border-radius: 14px; border: 1px solid var(--yellow-soft); background: #fff; color: var(--ink);
 }
+.field textarea { min-height: 90px; resize: vertical; }
+.field fieldset { border: 0; padding: 0; margin: 0; min-width: 0; }
+.radio-row { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 6px; }
+.radio-row label {
+  display: inline-flex; align-items: center; gap: 8px; padding: 10px 14px; border-radius: 14px;
+  background: #fff; border: 1px solid var(--yellow-soft); font-weight: 500; cursor: pointer; font-size: 0.92rem;
+}
+.form-actions { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; justify-content: space-between; }
+.form-note { font-size: 0.85rem; color: var(--muted); max-width: 48ch; }
+.form-link { display: none; font-weight: 600; color: var(--sea); }
+.form-link.show { display: inline; }
+@media (max-width: 760px) { .form-grid { grid-template-columns: 1fr; } }
 
 /* Contact strip */
 .contact {
@@ -657,6 +676,82 @@ section { margin-top: 56px; }
       </div>
     </section>
 
+    <section id="pesan" aria-labelledby="pesan-title">
+      <div class="section-head">
+        <h2 id="pesan-title"><span class="id">Form pemesanan</span><span class="en">Booking form</span></h2>
+        <p>
+          <span class="id">Isi data perjalananmu. Pesan akan dibuka di WhatsApp dengan isian sudah terisi, tinggal kirim.</span>
+          <span class="en">Fill in your trip details. The message opens in WhatsApp already filled in, just send it.</span>
+        </p>
+      </div>
+      <form class="glass form-card" id="bookForm">
+        <div class="form-grid">
+          <div class="field">
+            <label for="bk-nama"><span class="id">Nama</span><span class="en">Name</span></label>
+            <input id="bk-nama" name="nama" required autocomplete="name">
+          </div>
+          <div class="field">
+            <label for="bk-wa"><span class="id">No. WhatsApp kamu</span><span class="en">Your WhatsApp number</span></label>
+            <input id="bk-wa" type="tel" required autocomplete="tel">
+          </div>
+          <div class="field">
+            <label for="bk-tgl"><span class="id">Tanggal</span><span class="en">Date</span></label>
+            <input id="bk-tgl" type="date" required>
+          </div>
+          <div class="field">
+            <label for="bk-jam"><span class="id">Jam jemput</span><span class="en">Pick-up time</span></label>
+            <input id="bk-jam" type="time" required>
+          </div>
+          <div class="field full">
+            <label for="bk-jemput"><span class="id">Lokasi jemput</span><span class="en">Pick-up location</span></label>
+            <input id="bk-jemput" required>
+          </div>
+          <div class="field full">
+            <label for="bk-tujuan"><span class="id">Lokasi tujuan</span><span class="en">Destination</span></label>
+            <input id="bk-tujuan" required>
+          </div>
+          <div class="field">
+            <label for="bk-pax"><span class="id">Jumlah penumpang</span><span class="en">Number of passengers</span></label>
+            <input id="bk-pax" type="number" min="1" max="30" value="2" required>
+          </div>
+          <div class="field">
+            <label for="bk-mobil"><span class="id">Pilihan mobil</span><span class="en">Vehicle</span></label>
+            <select id="bk-mobil" required>
+              <option value="Belum tahu, mohon saran">Belum tahu, mohon saran / Not sure, please advise</option>
+              <option value="Van Hi Ace (12 penumpang)">Van Hi Ace (12 penumpang)</option>
+              <option value="New Innova Zenix (7 penumpang)">New Innova Zenix (7 penumpang)</option>
+              <option value="New Avanza (7 penumpang)">New Avanza (7 penumpang)</option>
+              <option value="New Xenia (7 penumpang)">New Xenia (7 penumpang)</option>
+              <option value="New Xpander (7 penumpang)">New Xpander (7 penumpang)</option>
+              <option value="New Rocky (5 penumpang)">New Rocky (5 penumpang)</option>
+              <option value="New Agya (5 penumpang)">New Agya (5 penumpang)</option>
+            </select>
+          </div>
+          <div class="field full">
+            <label for="bk-ket"><span class="id">Keterangan</span><span class="en">Notes</span></label>
+            <textarea id="bk-ket" rows="3"></textarea>
+          </div>
+          <div class="field full">
+            <fieldset>
+              <legend><span class="id">Kirim ke nomor</span><span class="en">Send to</span></legend>
+              <div class="radio-row">
+                <label><input type="radio" name="wa" value="628997070716" checked> WA 1 · 0899-7070-716</label>
+                <label><input type="radio" name="wa" value="628136759556"> WA 2 · 0813-6759-556</label>
+              </div>
+            </fieldset>
+          </div>
+        </div>
+        <div class="form-actions">
+          <button class="btn btn-wa" type="submit"><span class="id">Kirim lewat WhatsApp</span><span class="en">Send via WhatsApp</span></button>
+          <a class="form-link" id="waLink" href="#" target="_blank" rel="noopener"><span class="id">Buka WhatsApp jika tidak terbuka otomatis →</span><span class="en">Open WhatsApp if it did not open automatically →</span></a>
+          <p class="form-note">
+            <span class="id">Data ini hanya dipakai untuk menghubungi kamu lewat WhatsApp.</span>
+            <span class="en">This information is only used to contact you on WhatsApp.</span>
+          </p>
+        </div>
+      </form>
+    </section>
+
     <section id="booking" aria-labelledby="booking-title">
       <div class="section-head">
         <h2 id="booking-title"><span class="id">Cara booking &amp; pembayaran</span><span class="en">How to book &amp; pay</span></h2>
@@ -681,12 +776,6 @@ section { margin-top: 56px; }
             <span class="id">Salin nomor rekening</span><span class="en">Copy account number</span>
           </button>
           <span class="copy-msg" id="copyMsg" role="status" aria-live="polite"></span>
-        </div>
-        <div class="glass bank">
-          <span class="bank-label">QRIS Driverbatamtour</span>
-          <div class="qr-box">
-            <span><span class="id">Kode QRIS Driverbatamtour akan ditampilkan di sini.</span><span class="en">The Driverbatamtour QRIS code will appear here.</span></span>
-          </div>
         </div>
         <div class="glass step">
           <span class="num">3</span>
@@ -734,6 +823,35 @@ section { margin-top: 56px; }
   var saved = null;
   try { saved = localStorage.getItem("dbt-lang"); } catch (e) {}
   setLang(saved === "en" ? "en" : "id");
+
+  var form = document.getElementById("bookForm");
+  var waLink = document.getElementById("waLink");
+  if (form) {
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      function v(id) { return document.getElementById(id).value.trim(); }
+      var checked = form.querySelector('input[name="wa"]:checked');
+      var to = checked ? checked.value : "628997070716";
+      var lines = [
+        "Halo Driverbatamtour, saya mau booking:",
+        "",
+        "Nama: " + v("bk-nama"),
+        "No. WA: " + v("bk-wa"),
+        "Tanggal: " + v("bk-tgl"),
+        "Jam jemput: " + v("bk-jam"),
+        "Lokasi jemput: " + v("bk-jemput"),
+        "Tujuan: " + v("bk-tujuan"),
+        "Jumlah penumpang: " + v("bk-pax"),
+        "Pilihan mobil: " + v("bk-mobil")
+      ];
+      var ket = v("bk-ket");
+      if (ket) lines.push("Keterangan: " + ket);
+      var url = "https://wa.me/" + to + "?text=" + encodeURIComponent(lines.join("\n"));
+      waLink.href = url;
+      waLink.classList.add("show");
+      try { waLink.click(); } catch (err) {}
+    });
+  }
 
   var btn = document.getElementById("copyBtn");
   var msg = document.getElementById("copyMsg");
